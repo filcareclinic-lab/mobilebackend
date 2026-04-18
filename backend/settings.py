@@ -14,6 +14,10 @@ import os
 from pathlib import Path
 from datetime import timedelta
 from email.utils import formataddr
+from urllib.parse import quote_plus
+
+import dj_database_url
+from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -53,7 +57,7 @@ def env_list(name: str, default: list[str]) -> list[str]:
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '')
+SECRET_KEY = config('DJANGO_SECRET_KEY', default='')
 if not SECRET_KEY:
     raise RuntimeError('DJANGO_SECRET_KEY must be set in backend/.env')
 
@@ -90,9 +94,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -143,14 +147,21 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('POSTGRES_DB', 'clinicapps'),
-        'USER': os.environ.get('POSTGRES_USER', 'postgres'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', ''),
-        'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
-        'PORT': os.environ.get('POSTGRES_PORT', '5432'),
-    }
+    'default': dj_database_url.config(
+        default=config(
+            'DATABASE_URL',
+            default=(
+                'postgresql://{user}:{password}@{host}:{port}/{name}'.format(
+                    user=os.environ.get('POSTGRES_USER', 'postgres'),
+                    password=quote_plus(os.environ.get('POSTGRES_PASSWORD', '')),
+                    host=os.environ.get('POSTGRES_HOST', 'localhost'),
+                    port=os.environ.get('POSTGRES_PORT', '5432'),
+                    name=os.environ.get('POSTGRES_DB', 'clinicapps'),
+                )
+            ),
+        ),
+        conn_max_age=600,
+    )
 }
 
 
@@ -191,7 +202,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 STORAGES = {
