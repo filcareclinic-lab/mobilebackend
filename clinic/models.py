@@ -1,6 +1,7 @@
 from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.utils import timezone
 
 
 class UserManager(BaseUserManager):
@@ -150,3 +151,18 @@ class Notification(models.Model):
 
     def __str__(self):
         return f"Notification #{self.pk} for {self.user.email}"
+
+
+class SignupVerification(models.Model):
+    email = models.EmailField(unique=True)
+    first_name = models.CharField(max_length=150)
+    middle_name = models.CharField(max_length=150, blank=True)
+    last_name = models.CharField(max_length=150)
+    password_hash = models.CharField(max_length=255)
+    code_hash = models.CharField(max_length=255)
+    code_sent_at = models.DateTimeField(default=timezone.now)
+    expires_at = models.DateTimeField()
+    attempts = models.PositiveSmallIntegerField(default=0)
+
+    def __str__(self):
+        return f"Signup verification for {self.email}"

@@ -1,10 +1,15 @@
+import secrets
+from datetime import timedelta
+
 from django.contrib.auth import authenticate
+from django.contrib.auth.hashers import check_password, make_password
 from django.db import transaction
 from django.db.models import Q
+from django.utils import timezone
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
-from .models import Appointment, Doctor, Notification, Schedule, Specialization, Staff, User
+from .models import Appointment, Doctor, Notification, Schedule, SignupVerification, Specialization, Staff, User
 
 
 class SpecializationSerializer(serializers.ModelSerializer):
@@ -251,6 +256,91 @@ class NotificationSerializer(serializers.ModelSerializer):
         fields = ("id", "message", "is_read", "created_at")
 
 
+class SignupVerificationRequestSerializer(serializers.Serializer):
+    first_name = serializers.CharField(max_length=150)
+    middle_name = serializers.CharField(max_length=150, required=False, allow_blank=True)
+    last_name = serializers.CharField(max_length=150)
+    email = serializers.EmailField()
+    password = serializers.CharField(write_only=True, min_length=8)
+    confirm_password = serializers.CharField(write_only=True, min_length=8)
+
+    def validate_email(self, value):
+        normalized = value.lower()
+        if User.objects.filter(email__iexact=normalized).exists():
+            raise serializers.ValidationError("A user with this email already exists.")
+        return normalized
+
+    def validate(self, attrs):
+        if attrs["password"] != attrs["confirm_password"]:
+            raise serializers.ValidationError({"confirm_password": "Passwords do not match."})
+        return attrs
+
+    @transaction.atomic
+    def create(self, validated_data):
+        code = f"{secrets.randbelow(1_000_000):06d}"
+        expires_at = timezone.now() + timedelta(minutes=10)
+        verification, _ = SignupVerification.objects.update_or_create(
+            email=validated_data["email"],
+            defaults={
+                "first_name": validated_data["first_name"],
+                "middle_name": validated_data.get("middle_name", ""),
+                "last_name": validated_data["last_name"],
+                "password_hash": make_password(validated_data["password"]),
+                "code_hash": make_password(code),
+                "code_sent_at": timezone.now(),
+                "expires_at": expires_at,
+                "attempts": 0,
+            },
+        )
+        verification.raw_code = code
+        return verification
+
+
+class SignupVerificationConfirmSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    verification_code = serializers.CharField(max_length=6)
+
+    def validate_email(self, value):
+        return value.lower()
+
+    def validate(self, attrs):
+        attrs["verification_code"] = attrs["verification_code"].strip()
+        try:
+            verification = SignupVerification.objects.get(email__iexact=attrs["email"])
+        except SignupVerification.DoesNotExist:
+            raise serializers.ValidationError({"email": "No pending verification found for this email."})
+
+        if verification.expires_at < timezone.now():
+            verification.delete()
+            raise serializers.ValidationError({"verification_code": "Verification code has expired. Please request a new one."})
+
+        if verification.attempts >= 5:
+            raise serializers.ValidationError({"verification_code": "Too many incorrect attempts. Please request a new code."})
+
+        if not check_password(attrs["verification_code"], verification.code_hash):
+            verification.attempts += 1
+            verification.save(update_fields=["attempts"])
+            raise serializers.ValidationError({"verification_code": "Incorrect verification code."})
+
+        attrs["verification"] = verification
+        return attrs
+
+    @transaction.atomic
+    def create(self, validated_data):
+        verification = validated_data["verification"]
+        user = User(
+            first_name=verification.first_name,
+            middle_name=verification.middle_name,
+            last_name=verification.last_name,
+            email=verification.email,
+            role=User.Role.PATIENT,
+        )
+        user.password = verification.password_hash
+        user.save()
+        verification.delete()
+        return user
+
+
 class PatientSignupSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, min_length=8)
     confirm_password = serializers.CharField(write_only=True, min_length=8)
@@ -300,6 +390,9 @@ class LoginSerializer(serializers.Serializer):
             password=password,
         )
         if not user:
+            inactive_user = User.objects.filter(email__iexact=email).first()
+            if inactive_user and not inactive_user.is_active:
+                raise serializers.ValidationError("Please verify your email before logging in.")
             raise serializers.ValidationError("Invalid email or password.")
         attrs["user"] = user
         return attrs

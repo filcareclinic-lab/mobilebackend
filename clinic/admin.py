@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
-from .models import Appointment, Doctor, Notification, Schedule, Staff, User, Specialization
+from .models import Appointment, Doctor, Notification, Schedule, SignupVerification, Staff, User, Specialization
 
 
 @admin.register(User)
@@ -59,3 +59,10 @@ class NotificationAdmin(admin.ModelAdmin):
     list_filter = ("is_read", "created_at")
 
 admin.site.register(Specialization)
+
+
+@admin.register(SignupVerification)
+class SignupVerificationAdmin(admin.ModelAdmin):
+    list_display = ("email", "first_name", "last_name", "attempts", "code_sent_at", "expires_at")
+    search_fields = ("email", "first_name", "last_name")
+    list_filter = ("code_sent_at", "expires_at", "attempts")

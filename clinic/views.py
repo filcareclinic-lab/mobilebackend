@@ -8,11 +8,11 @@ import urllib.request
 import uuid
 from django.conf import settings
 from django.core.mail import EmailMessage
+from django.utils import timezone
 
 from django.db import transaction
 from django.db.models import Count, Q
-from django.utils import timezone
-from rest_framework import generics, permissions, response, status
+from rest_framework import permissions, response, status
 from rest_framework.views import APIView
 from rest_framework_simplejwt.views import TokenObtainPairView
 
@@ -28,7 +28,8 @@ from .serializers import (
     DoctorSerializer,
     NotificationSerializer,
     PatientBookingSerializer,
-    PatientSignupSerializer,
+    SignupVerificationConfirmSerializer,
+    SignupVerificationRequestSerializer,
     ScheduleSerializer,
     ScheduleWriteSerializer,
     SpecializationSerializer,
@@ -114,6 +115,24 @@ def send_account_credentials_email(*, recipient_name: str, recipient_email: str,
     email.send(fail_silently=False)
 
 
+def send_signup_verification_email(*, recipient_name: str, recipient_email: str, verification_code: str) -> None:
+    subject = "Your FilCare Clinic verification code"
+    greeting_name = recipient_name.strip() or "there"
+    body = (
+        f"Hello {greeting_name},\n\n"
+        "Use the verification code below to complete your FilCare Clinic signup:\n\n"
+        f"{verification_code}\n\n"
+        "This code expires in 10 minutes.\n"
+    )
+    email = EmailMessage(
+        subject=subject,
+        body=body,
+        from_email=settings.DEFAULT_FROM_EMAIL,
+        to=[recipient_email],
+    )
+    email.send(fail_silently=False)
+
+
 class IsAdminUserRole(permissions.BasePermission):
     def has_permission(self, request, view):
         return bool(request.user and request.user.is_authenticated and request.user.role == User.Role.ADMIN)
@@ -146,12 +165,36 @@ def cleanup_expired_schedules(doctor=None):
 
 
 
-class PatientSignupView(generics.CreateAPIView):
-    serializer_class = PatientSignupSerializer
+class SignupVerificationRequestView(APIView):
     permission_classes = [permissions.AllowAny]
 
-    def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
+    def post(self, request):
+        serializer = SignupVerificationRequestSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        verification = serializer.save()
+        try:
+            send_signup_verification_email(
+                recipient_name=f"{verification.first_name} {verification.last_name}",
+                recipient_email=verification.email,
+                verification_code=verification.raw_code,
+            )
+        except Exception:
+            verification.delete()
+            raise
+        return response.Response(
+            {
+                "message": "Verification code sent to your email.",
+                "email": verification.email,
+            },
+            status=status.HTTP_200_OK,
+        )
+
+
+class PatientSignupView(APIView):
+    permission_classes = [permissions.AllowAny]
+
+    def post(self, request):
+        serializer = SignupVerificationConfirmSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
         data = {

@@ -212,12 +212,12 @@ STORAGES = {
 }
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = os.environ.get('MAILER_EMAIL_HOST', 'smtp.gmail.com')
-EMAIL_PORT = int(os.environ.get('MAILER_EMAIL_PORT', '587'))
-EMAIL_USE_TLS = os.environ.get('MAILER_EMAIL_USE_TLS', 'true').lower() in {'1', 'true', 'yes', 'on'}
-EMAIL_USE_SSL = os.environ.get('MAILER_EMAIL_USE_SSL', 'false').lower() in {'1', 'true', 'yes', 'on'}
-EMAIL_HOST_USER = os.environ.get('MAILER_GMAIL_USER', '').strip()
-EMAIL_HOST_PASSWORD = os.environ.get('MAILER_GMAIL_APP_PASSWORD', '').strip()
+EMAIL_HOST = os.environ.get('MAILER_SMTP_HOST', os.environ.get('MAILER_EMAIL_HOST', 'smtp.gmail.com')).strip()
+EMAIL_PORT = int(os.environ.get('MAILER_SMTP_PORT', os.environ.get('MAILER_EMAIL_PORT', '587')))
+EMAIL_USE_TLS = os.environ.get('MAILER_SMTP_USE_TLS', os.environ.get('MAILER_EMAIL_USE_TLS', 'true')).lower() in {'1', 'true', 'yes', 'on'}
+EMAIL_USE_SSL = os.environ.get('MAILER_SMTP_USE_SSL', os.environ.get('MAILER_EMAIL_USE_SSL', 'false')).lower() in {'1', 'true', 'yes', 'on'}
+EMAIL_HOST_USER = os.environ.get('MAILER_SMTP_USER', os.environ.get('MAILER_GMAIL_USER', '')).strip()
+EMAIL_HOST_PASSWORD = os.environ.get('MAILER_SMTP_PASSWORD', os.environ.get('MAILER_GMAIL_APP_PASSWORD', '')).strip()
 MAILER_FROM_EMAIL = os.environ.get('MAILER_FROM_EMAIL', EMAIL_HOST_USER).strip()
 MAILER_FROM_NAME = os.environ.get('MAILER_FROM_NAME', '').strip()
 DEFAULT_FROM_EMAIL = formataddr((MAILER_FROM_NAME, MAILER_FROM_EMAIL)) if MAILER_FROM_NAME else MAILER_FROM_EMAIL

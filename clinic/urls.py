@@ -28,6 +28,7 @@ from .views import (
     PatientDoctorListView,
     PatientDoctorScheduleView,
     PatientSignupView,
+    SignupVerificationRequestView,
     DoctorReviewLabResultView,
     PatientSubmitLabResultView,
     PatientSpecializationListView,
@@ -42,6 +43,7 @@ from .views import (
 
 urlpatterns = [
     path("auth/login/", LoginView.as_view(), name="login"),
+    path("auth/signup/request-code/", SignupVerificationRequestView.as_view(), name="signup-request-code"),
     path("auth/signup/", PatientSignupView.as_view(), name="patient-signup"),
     path("auth/me/", CurrentUserView.as_view(), name="current-user"),
     path("dashboard/", DashboardView.as_view(), name="dashboard"),
