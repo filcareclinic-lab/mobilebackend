@@ -126,6 +126,7 @@ class AdminScheduleWriteSerializer(serializers.Serializer):
 class PatientBookingSerializer(serializers.Serializer):
     schedule_id = serializers.IntegerField()
     reason = serializers.CharField()
+    lab_result = serializers.ChoiceField(choices=(('with lab result', 'With lab result'), ('none', 'None')), default='none')
 
     def validate_schedule_id(self, value):
         try:
@@ -169,6 +170,7 @@ class PatientBookingSerializer(serializers.Serializer):
             appointment_date=schedule.date,
             appointment_time=schedule.start_time,
             reason=validated_data['reason'],
+            lab_result=validated_data.get('lab_result', 'none'),
             status=Appointment.Status.PENDING,
         )
         schedule.is_available = False
@@ -237,6 +239,7 @@ class AppointmentSerializer(serializers.ModelSerializer):
             "appointment_time",
             "status",
             "reason",
+            "lab_result",
             "cancel_reason",
             "checkup_result",
             "needs_laboratory",

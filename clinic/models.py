@@ -124,6 +124,11 @@ class Appointment(models.Model):
     appointment_time = models.TimeField()
     status = models.CharField(max_length=20, choices=Status.choices, default=Status.PENDING)
     reason = models.TextField()
+    lab_result = models.CharField(
+        max_length=20,
+        choices=[('with lab result', 'With lab result'), ('none', 'None')],
+        default='none',
+    )
     cancel_reason = models.TextField(blank=True, default='')
     checkup_result = models.TextField(blank=True, default='')
     needs_laboratory = models.BooleanField(default=False)
