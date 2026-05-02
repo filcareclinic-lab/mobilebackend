@@ -1,0 +1,323 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+2 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+3 0 obj
+<< /Type /Pages /Kids [5 0 R 7 0 R 9 0 R 11 0 R] /Count 4 >>
+endobj
+4 0 obj
+<< /Type /Catalog /Pages 3 0 R >>
+endobj
+5 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 6 0 R >>
+endobj
+6 0 obj
+<< /Length 4091 >>
+stream
+0.961 0.961 0.961 rg
+37.00 673.00 248.00 82.00 re f
+0.000 0.000 0.000 RG
+2.10 w
+37.00 673.00 248.00 82.00 re S
+0.000 0.000 0.000 rg
+BT /F2 22.00 Tf 1 0 0 1 54.00 729.00 Tm (User Guide) Tj ET
+BT /F2 13.50 Tf 1 0 0 1 54.00 706.00 Tm (Patient) Tj ET
+BT /F1 10.50 Tf 1 0 0 1 54.00 690.00 Tm (Registration, login, and booking flow for patients) Tj ET
+BT /F1 8.50 Tf 1 0 0 1 473.00 742.00 Tm (rev 05/02/2026) Tj ET
+0.000 0.000 0.000 RG
+1.80 w
+42.00 557.25 528.00 96.75 re S
+0.000 0.000 0.000 rg
+BT /F2 9.80 Tf 1 0 0 1 52.00 636.00 Tm (Features) Tj ET
+BT /F2 8.60 Tf 1 0 0 1 54.00 618.00 Tm (-) Tj ET
+BT /F1 8.60 Tf 1 0 0 1 70.00 618.00 Tm (Create a patient account using the registration form and verification code.) Tj ET
+BT /F2 8.60 Tf 1 0 0 1 54.00 601.56 Tm (-) Tj ET
+BT /F1 8.60 Tf 1 0 0 1 70.00 601.56 Tm (Sign in with your email and password after account creation.) Tj ET
+BT /F2 8.60 Tf 1 0 0 1 54.00 585.12 Tm (-) Tj ET
+BT /F1 8.60 Tf 1 0 0 1 70.00 585.12 Tm (Find a doctor by specialization and book a face-to-face appointment.) Tj ET
+BT /F2 8.60 Tf 1 0 0 1 54.00 568.69 Tm (-) Tj ET
+BT /F1 8.60 Tf 1 0 0 1 70.00 568.69 Tm (Track appointment status, cancellations, and lab result requests.) Tj ET
+0.000 0.000 0.000 RG
+1.80 w
+42.00 483.11 528.00 64.14 re S
+0.000 0.000 0.000 rg
+BT /F2 9.90 Tf 1 0 0 1 52.00 529.25 Tm (Patient Registration) Tj ET
+BT /F2 8.70 Tf 1 0 0 1 54.00 511.25 Tm (1.) Tj ET
+BT /F1 8.70 Tf 1 0 0 1 70.00 511.25 Tm (Open Sign Up and enter your first name, middle name if needed, last name, email address, password, and confirm password.) Tj ET
+BT /F2 8.70 Tf 1 0 0 1 54.00 494.68 Tm (2.) Tj ET
+BT /F1 8.70 Tf 1 0 0 1 70.00 494.68 Tm (Tap Send Verification Code, check your email, then enter the 6-digit code to finish creating the account.) Tj ET
+0.000 0.000 0.000 RG
+1.80 w
+42.00 408.96 528.00 64.14 re S
+0.000 0.000 0.000 rg
+BT /F2 9.90 Tf 1 0 0 1 52.00 455.11 Tm (Patient Login) Tj ET
+BT /F2 8.70 Tf 1 0 0 1 54.00 437.11 Tm (1.) Tj ET
+BT /F1 8.70 Tf 1 0 0 1 70.00 437.11 Tm (Open the Login screen, enter your registered email address and password, then tap Sign In.) Tj ET
+BT /F2 8.70 Tf 1 0 0 1 54.00 420.54 Tm (2.) Tj ET
+BT /F1 8.70 Tf 1 0 0 1 70.00 420.54 Tm (After login, the app opens the patient dashboard where you can see your profile and recent activity.) Tj ET
+0.000 0.000 0.000 RG
+1.80 w
+42.00 301.68 528.00 97.28 re S
+0.000 0.000 0.000 rg
+BT /F2 9.90 Tf 1 0 0 1 52.00 380.96 Tm (Patient Booking Flow) Tj ET
+BT /F2 8.70 Tf 1 0 0 1 54.00 362.96 Tm (1.) Tj ET
+BT /F1 8.70 Tf 1 0 0 1 70.00 362.96 Tm (Open Book Appointment and choose a specialization.) Tj ET
+BT /F2 8.70 Tf 1 0 0 1 54.00 346.39 Tm (2.) Tj ET
+BT /F1 8.70 Tf 1 0 0 1 70.00 346.39 Tm (Select the doctor you want to visit.) Tj ET
+BT /F2 8.70 Tf 1 0 0 1 54.00 329.82 Tm (3.) Tj ET
+BT /F1 8.70 Tf 1 0 0 1 70.00 329.82 Tm (Pick an available schedule, then enter the reason for visit.) Tj ET
+BT /F2 8.70 Tf 1 0 0 1 54.00 313.25 Tm (4.) Tj ET
+BT /F1 8.70 Tf 1 0 0 1 70.00 313.25 Tm (Review the summary and confirm the booking.) Tj ET
+0.000 0.000 0.000 RG
+1.80 w
+42.00 210.97 528.00 80.71 re S
+0.000 0.000 0.000 rg
+BT /F2 9.90 Tf 1 0 0 1 52.00 273.68 Tm (Patient Follow-Up Flow) Tj ET
+BT /F2 8.70 Tf 1 0 0 1 54.00 255.68 Tm (1.) Tj ET
+BT /F1 8.70 Tf 1 0 0 1 70.00 255.68 Tm (Open My Appointments to check pending, confirmed, completed, or cancelled visits.) Tj ET
+BT /F2 8.70 Tf 1 0 0 1 54.00 239.11 Tm (2.) Tj ET
+BT /F1 8.70 Tf 1 0 0 1 70.00 239.11 Tm (If the doctor requires it, upload the lab result photo and add a description.) Tj ET
+BT /F2 8.70 Tf 1 0 0 1 54.00 222.54 Tm (3.) Tj ET
+BT /F1 8.70 Tf 1 0 0 1 70.00 222.54 Tm (If you need to cancel, send a cancellation request with a reason.) Tj ET
+0.000 0.000 0.000 RG
+1.60 w
+36.00 146.97 540.00 52.00 re S
+BT /F2 10.20 Tf 1 0 0 1 50.00 184.97 Tm (NOTE) Tj ET
+BT /F1 8.20 Tf 1 0 0 1 50.00 170.97 Tm (If the patient registration form, login fields, or booking screens change, regenerate this PDF so the steps stay accurate.) Tj ET
+BT /F1 8.20 Tf 1 0 0 1 50.00 56.00 Tm (Page 1 of 4) Tj ET
+0.012 0.412 0.631 RG
+0.90 w
+50.00 62.00 m 546.00 62.00 l S
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 8 0 R >>
+endobj
+8 0 obj
+<< /Length 2977 >>
+stream
+0.961 0.961 0.961 rg
+37.00 673.00 248.00 82.00 re f
+0.000 0.000 0.000 RG
+2.10 w
+37.00 673.00 248.00 82.00 re S
+0.000 0.000 0.000 rg
+BT /F2 22.00 Tf 1 0 0 1 54.00 729.00 Tm (User Guide) Tj ET
+BT /F2 13.50 Tf 1 0 0 1 54.00 706.00 Tm (Patient) Tj ET
+BT /F1 10.50 Tf 1 0 0 1 54.00 690.00 Tm (Appointment tracking, cancellation, and lab result flow) Tj ET
+BT /F1 8.50 Tf 1 0 0 1 473.00 742.00 Tm (rev 05/02/2026) Tj ET
+0.000 0.000 0.000 RG
+1.80 w
+42.00 573.69 528.00 80.31 re S
+0.000 0.000 0.000 rg
+BT /F2 9.80 Tf 1 0 0 1 52.00 636.00 Tm (Features) Tj ET
+BT /F2 8.60 Tf 1 0 0 1 54.00 618.00 Tm (-) Tj ET
+BT /F1 8.60 Tf 1 0 0 1 70.00 618.00 Tm (Review appointment statuses from the dashboard.) Tj ET
+BT /F2 8.60 Tf 1 0 0 1 54.00 601.56 Tm (-) Tj ET
+BT /F1 8.60 Tf 1 0 0 1 70.00 601.56 Tm (See doctor notes and laboratory requirements on each appointment card.) Tj ET
+BT /F2 8.60 Tf 1 0 0 1 54.00 585.12 Tm (-) Tj ET
+BT /F1 8.60 Tf 1 0 0 1 70.00 585.12 Tm (Submit lab results or request cancellation from the appointment record.) Tj ET
+0.000 0.000 0.000 RG
+1.80 w
+42.00 499.54 528.00 64.14 re S
+0.000 0.000 0.000 rg
+BT /F2 9.90 Tf 1 0 0 1 52.00 545.69 Tm (Appointment Tracking) Tj ET
+BT /F2 8.70 Tf 1 0 0 1 54.00 527.69 Tm (1.) Tj ET
+BT /F1 8.70 Tf 1 0 0 1 70.00 527.69 Tm (Open My Appointments and use the tabs to separate today, upcoming, confirmed, completed, and cancelled visits.) Tj ET
+BT /F2 8.70 Tf 1 0 0 1 54.00 511.12 Tm (2.) Tj ET
+BT /F1 8.70 Tf 1 0 0 1 70.00 511.12 Tm (Each appointment card shows the doctor name, schedule, reason for visit, and current status.) Tj ET
+0.000 0.000 0.000 RG
+1.80 w
+42.00 425.40 528.00 64.14 re S
+0.000 0.000 0.000 rg
+BT /F2 9.90 Tf 1 0 0 1 52.00 471.54 Tm (Lab Result Flow) Tj ET
+BT /F2 8.70 Tf 1 0 0 1 54.00 453.54 Tm (1.) Tj ET
+BT /F1 8.70 Tf 1 0 0 1 70.00 453.54 Tm (If the doctor asks for a laboratory result, open the appointment and submit a photo or a short description.) Tj ET
+BT /F2 8.70 Tf 1 0 0 1 54.00 436.97 Tm (2.) Tj ET
+BT /F1 8.70 Tf 1 0 0 1 70.00 436.97 Tm (Wait for the doctor to review the submission before booking another related visit.) Tj ET
+0.000 0.000 0.000 RG
+1.80 w
+42.00 351.26 528.00 64.14 re S
+0.000 0.000 0.000 rg
+BT /F2 9.90 Tf 1 0 0 1 52.00 397.40 Tm (Cancellation Flow) Tj ET
+BT /F2 8.70 Tf 1 0 0 1 54.00 379.40 Tm (1.) Tj ET
+BT /F1 8.70 Tf 1 0 0 1 70.00 379.40 Tm (For pending appointments, tap Request Cancellation and enter the reason.) Tj ET
+BT /F2 8.70 Tf 1 0 0 1 54.00 362.83 Tm (2.) Tj ET
+BT /F1 8.70 Tf 1 0 0 1 70.00 362.83 Tm (Wait for the doctor or staff to approve or reject the request.) Tj ET
+0.000 0.000 0.000 RG
+1.60 w
+36.00 287.26 540.00 52.00 re S
+BT /F2 10.20 Tf 1 0 0 1 50.00 325.26 Tm (NOTE) Tj ET
+BT /F1 8.20 Tf 1 0 0 1 50.00 311.26 Tm (This page covers patient follow-up actions after booking. Update it whenever appointment statuses or approval rules change.) Tj ET
+BT /F1 8.20 Tf 1 0 0 1 50.00 56.00 Tm (Page 2 of 4) Tj ET
+0.012 0.412 0.631 RG
+0.90 w
+50.00 62.00 m 546.00 62.00 l S
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 10 0 R >>
+endobj
+10 0 obj
+<< /Length 3394 >>
+stream
+0.961 0.961 0.961 rg
+37.00 673.00 248.00 82.00 re f
+0.000 0.000 0.000 RG
+2.10 w
+37.00 673.00 248.00 82.00 re S
+0.000 0.000 0.000 rg
+BT /F2 22.00 Tf 1 0 0 1 54.00 729.00 Tm (User Guide) Tj ET
+BT /F2 13.50 Tf 1 0 0 1 54.00 706.00 Tm (Clinic Attendant / Staff) Tj ET
+BT /F1 10.50 Tf 1 0 0 1 54.00 690.00 Tm (Login and front-desk workflow for the clinic attendant) Tj ET
+BT /F1 8.50 Tf 1 0 0 1 473.00 742.00 Tm (rev 05/02/2026) Tj ET
+0.000 0.000 0.000 RG
+1.80 w
+42.00 557.25 528.00 96.75 re S
+0.000 0.000 0.000 rg
+BT /F2 9.80 Tf 1 0 0 1 52.00 636.00 Tm (Features) Tj ET
+BT /F2 8.60 Tf 1 0 0 1 54.00 618.00 Tm (-) Tj ET
+BT /F1 8.60 Tf 1 0 0 1 70.00 618.00 Tm (Log in using the clinic attendant account.) Tj ET
+BT /F2 8.60 Tf 1 0 0 1 54.00 601.56 Tm (-) Tj ET
+BT /F1 8.60 Tf 1 0 0 1 70.00 601.56 Tm (Review, confirm, and search appointment records.) Tj ET
+BT /F2 8.60 Tf 1 0 0 1 54.00 585.12 Tm (-) Tj ET
+BT /F1 8.60 Tf 1 0 0 1 70.00 585.12 Tm (Approve or reject cancellation requests.) Tj ET
+BT /F2 8.60 Tf 1 0 0 1 54.00 568.69 Tm (-) Tj ET
+BT /F1 8.60 Tf 1 0 0 1 70.00 568.69 Tm (Check the doctor's schedule and availability.) Tj ET
+0.000 0.000 0.000 RG
+1.80 w
+42.00 483.11 528.00 64.14 re S
+0.000 0.000 0.000 rg
+BT /F2 9.90 Tf 1 0 0 1 52.00 529.25 Tm (Staff Login) Tj ET
+BT /F2 8.70 Tf 1 0 0 1 54.00 511.25 Tm (1.) Tj ET
+BT /F1 8.70 Tf 1 0 0 1 70.00 511.25 Tm (Open the Login screen and sign in using the clinic attendant email and password provided by the clinic.) Tj ET
+BT /F2 8.70 Tf 1 0 0 1 54.00 494.68 Tm (2.) Tj ET
+BT /F1 8.70 Tf 1 0 0 1 70.00 494.68 Tm (After login, the staff dashboard opens with the assigned doctor's appointment summary.) Tj ET
+0.000 0.000 0.000 RG
+1.80 w
+42.00 375.82 528.00 97.28 re S
+0.000 0.000 0.000 rg
+BT /F2 9.90 Tf 1 0 0 1 52.00 455.11 Tm (Front Desk Flow) Tj ET
+BT /F2 8.70 Tf 1 0 0 1 54.00 437.11 Tm (1.) Tj ET
+BT /F1 8.70 Tf 1 0 0 1 70.00 437.11 Tm (Use the tabs to separate pending, confirmed, and handled visits.) Tj ET
+BT /F2 8.70 Tf 1 0 0 1 54.00 420.54 Tm (2.) Tj ET
+BT /F1 8.70 Tf 1 0 0 1 70.00 420.54 Tm (Search by patient name, doctor, date, or status when a record needs to be checked quickly.) Tj ET
+BT /F2 8.70 Tf 1 0 0 1 54.00 403.96 Tm (3.) Tj ET
+BT /F1 8.70 Tf 1 0 0 1 70.00 403.96 Tm (Confirm bookings that are ready and keep the appointment queue updated.) Tj ET
+BT /F2 8.70 Tf 1 0 0 1 54.00 387.39 Tm (4.) Tj ET
+BT /F1 8.70 Tf 1 0 0 1 70.00 387.39 Tm (Review cancellation requests and approve or reject them based on clinic policy.) Tj ET
+0.000 0.000 0.000 RG
+1.80 w
+42.00 301.68 528.00 64.14 re S
+0.000 0.000 0.000 rg
+BT /F2 9.90 Tf 1 0 0 1 52.00 347.82 Tm (Schedule Support) Tj ET
+BT /F2 8.70 Tf 1 0 0 1 54.00 329.82 Tm (1.) Tj ET
+BT /F1 8.70 Tf 1 0 0 1 70.00 329.82 Tm (Open Doctor Schedule to see the assigned doctor's available dates, times, and consultation fee.) Tj ET
+BT /F2 8.70 Tf 1 0 0 1 54.00 313.25 Tm (2.) Tj ET
+BT /F1 8.70 Tf 1 0 0 1 70.00 313.25 Tm (Use the schedule view to help patients and answer booking questions correctly.) Tj ET
+0.000 0.000 0.000 RG
+1.60 w
+36.00 237.68 540.00 52.00 re S
+BT /F2 10.20 Tf 1 0 0 1 50.00 275.68 Tm (NOTE) Tj ET
+BT /F1 8.20 Tf 1 0 0 1 50.00 261.68 Tm (Use the staff page as the clinic support guide. If approval rights or schedule handling changes, update this PDF.) Tj ET
+BT /F1 8.20 Tf 1 0 0 1 50.00 56.00 Tm (Page 3 of 4) Tj ET
+0.012 0.412 0.631 RG
+0.90 w
+50.00 62.00 m 546.00 62.00 l S
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 12 0 R >>
+endobj
+12 0 obj
+<< /Length 3375 >>
+stream
+0.961 0.961 0.961 rg
+37.00 673.00 248.00 82.00 re f
+0.000 0.000 0.000 RG
+2.10 w
+37.00 673.00 248.00 82.00 re S
+0.000 0.000 0.000 rg
+BT /F2 22.00 Tf 1 0 0 1 54.00 729.00 Tm (User Guide) Tj ET
+BT /F2 13.50 Tf 1 0 0 1 54.00 706.00 Tm (Doctor) Tj ET
+BT /F1 10.50 Tf 1 0 0 1 54.00 690.00 Tm (Login, consultation, lab review, and schedule flow for doctors) Tj ET
+BT /F1 8.50 Tf 1 0 0 1 473.00 742.00 Tm (rev 05/02/2026) Tj ET
+0.000 0.000 0.000 RG
+1.80 w
+42.00 540.81 528.00 113.19 re S
+0.000 0.000 0.000 rg
+BT /F2 9.80 Tf 1 0 0 1 52.00 636.00 Tm (Features) Tj ET
+BT /F2 8.60 Tf 1 0 0 1 54.00 618.00 Tm (-) Tj ET
+BT /F1 8.60 Tf 1 0 0 1 70.00 618.00 Tm (Log in using the doctor account.) Tj ET
+BT /F2 8.60 Tf 1 0 0 1 54.00 601.56 Tm (-) Tj ET
+BT /F1 8.60 Tf 1 0 0 1 70.00 601.56 Tm (Review patient appointments by status.) Tj ET
+BT /F2 8.60 Tf 1 0 0 1 54.00 585.12 Tm (-) Tj ET
+BT /F1 8.60 Tf 1 0 0 1 70.00 585.12 Tm (Mark consultations as done and add checkup notes.) Tj ET
+BT /F2 8.60 Tf 1 0 0 1 54.00 568.69 Tm (-) Tj ET
+BT /F1 8.60 Tf 1 0 0 1 70.00 568.69 Tm (Approve or reject submitted lab results.) Tj ET
+BT /F2 8.60 Tf 1 0 0 1 54.00 552.25 Tm (-) Tj ET
+BT /F1 8.60 Tf 1 0 0 1 70.00 552.25 Tm (Create and manage your own clinic schedule.) Tj ET
+0.000 0.000 0.000 RG
+1.80 w
+42.00 466.67 528.00 64.14 re S
+0.000 0.000 0.000 rg
+BT /F2 9.90 Tf 1 0 0 1 52.00 512.81 Tm (Doctor Login) Tj ET
+BT /F2 8.70 Tf 1 0 0 1 54.00 494.81 Tm (1.) Tj ET
+BT /F1 8.70 Tf 1 0 0 1 70.00 494.81 Tm (Open the Login screen and sign in using the doctor email and password.) Tj ET
+BT /F2 8.70 Tf 1 0 0 1 54.00 478.24 Tm (2.) Tj ET
+BT /F1 8.70 Tf 1 0 0 1 70.00 478.24 Tm (After login, the doctor dashboard shows the current workload and recent activity.) Tj ET
+0.000 0.000 0.000 RG
+1.80 w
+42.00 375.95 528.00 80.71 re S
+0.000 0.000 0.000 rg
+BT /F2 9.90 Tf 1 0 0 1 52.00 438.67 Tm (Consultation Flow) Tj ET
+BT /F2 8.70 Tf 1 0 0 1 54.00 420.67 Tm (1.) Tj ET
+BT /F1 8.70 Tf 1 0 0 1 70.00 420.67 Tm (Open My Appointments and review the patient list by status.) Tj ET
+BT /F2 8.70 Tf 1 0 0 1 54.00 404.10 Tm (2.) Tj ET
+BT /F1 8.70 Tf 1 0 0 1 70.00 404.10 Tm (Check the reason for visit, appointment time, and any laboratory requirement before the consultation.) Tj ET
+BT /F2 8.70 Tf 1 0 0 1 54.00 387.53 Tm (3.) Tj ET
+BT /F1 8.70 Tf 1 0 0 1 70.00 387.53 Tm (When the visit is complete, tap Mark as Done and enter the checkup result or doctor's note.) Tj ET
+0.000 0.000 0.000 RG
+1.80 w
+42.00 301.81 528.00 64.14 re S
+0.000 0.000 0.000 rg
+BT /F2 9.90 Tf 1 0 0 1 52.00 347.95 Tm (Lab And Schedule Flow) Tj ET
+BT /F2 8.70 Tf 1 0 0 1 54.00 329.95 Tm (1.) Tj ET
+BT /F1 8.70 Tf 1 0 0 1 70.00 329.95 Tm (If a patient submits a lab result, open the review panel, inspect the image, then approve or reject it with feedback.) Tj ET
+BT /F2 8.70 Tf 1 0 0 1 54.00 313.38 Tm (2.) Tj ET
+BT /F1 8.70 Tf 1 0 0 1 70.00 313.38 Tm (Open My Schedules to create, edit, or delete availability slots and keep the clinic calendar current.) Tj ET
+0.000 0.000 0.000 RG
+1.60 w
+36.00 237.81 540.00 52.00 re S
+BT /F2 10.20 Tf 1 0 0 1 50.00 275.81 Tm (NOTE) Tj ET
+BT /F1 8.20 Tf 1 0 0 1 50.00 261.81 Tm (This doctor page matches the current app flow. If login, lab review, or schedule logic changes, regenerate the PDF.) Tj ET
+BT /F1 8.20 Tf 1 0 0 1 50.00 56.00 Tm (Page 4 of 4) Tj ET
+0.012 0.412 0.631 RG
+0.90 w
+50.00 62.00 m 546.00 62.00 l S
+endstream
+endobj
+xref
+0 13
+0000000000 65535 f 
+0000000015 00000 n 
+0000000085 00000 n 
+0000000160 00000 n 
+0000000236 00000 n 
+0000000285 00000 n 
+0000000421 00000 n 
+0000004564 00000 n 
+0000004700 00000 n 
+0000007729 00000 n 
+0000007866 00000 n 
+0000011313 00000 n 
+0000011451 00000 n 
+trailer
+<< /Size 13 /Root 4 0 R >>
+startxref
+14879
+%%EOF

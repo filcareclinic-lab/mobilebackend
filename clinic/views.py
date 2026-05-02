@@ -133,6 +133,17 @@ def send_signup_verification_email(*, recipient_name: str, recipient_email: str,
     email.send(fail_silently=False)
 
 
+def format_email_delivery_hint(exc: Exception) -> str:
+    host = getattr(settings, "EMAIL_HOST", "")
+    from_email = getattr(settings, "MAILER_FROM_EMAIL", "")
+    if host == "smtp-relay.brevo.com":
+        return (
+            f"{exc}. Brevo SMTP is configured with from address '{from_email}'. "
+            "Make sure that sender is verified in Brevo, or use an authenticated domain sender."
+        )
+    return str(exc)
+
+
 class IsAdminUserRole(permissions.BasePermission):
     def has_permission(self, request, view):
         return bool(request.user and request.user.is_authenticated and request.user.role == User.Role.ADMIN)
@@ -178,9 +189,15 @@ class SignupVerificationRequestView(APIView):
                 recipient_email=verification.email,
                 verification_code=verification.raw_code,
             )
-        except Exception:
+        except Exception as exc:
             verification.delete()
-            raise
+            return response.Response(
+                {
+                    "detail": "Unable to send the verification email.",
+                    "error": format_email_delivery_hint(exc),
+                },
+                status=status.HTTP_503_SERVICE_UNAVAILABLE,
+            )
         return response.Response(
             {
                 "message": "Verification code sent to your email.",
@@ -1002,7 +1019,7 @@ class AdminDoctorListCreateView(APIView):
                 password=password,
             )
         except Exception as exc:
-            email_warning = f"Doctor account created, but email could not be sent: {exc}"
+            email_warning = f"Doctor account created, but email could not be sent: {format_email_delivery_hint(exc)}"
         return response.Response(
             {
                 **DoctorSerializer(
@@ -1075,7 +1092,7 @@ class AdminStaffListCreateView(APIView):
                 password=password,
             )
         except Exception as exc:
-            email_warning = f"Staff account created, but email could not be sent: {exc}"
+            email_warning = f"Staff account created, but email could not be sent: {format_email_delivery_hint(exc)}"
         return response.Response(
             {
                 **StaffSerializer(Staff.objects.select_related("user", "assigned_doctor__user").get(pk=staff.pk)).data,
