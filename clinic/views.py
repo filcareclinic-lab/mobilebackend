@@ -7,7 +7,6 @@ import urllib.parse
 import urllib.request
 import uuid
 from django.conf import settings
-from django.core.mail import EmailMessage
 from django.utils import timezone
 
 from django.db import transaction
@@ -96,6 +95,57 @@ def upload_lab_result_image_to_cloudinary(image_data: str) -> str:
     return secure_url
 
 
+def send_brevo_transactional_email(*, recipient_email: str, recipient_name: str, subject: str, text_content: str) -> None:
+    api_key = getattr(settings, "BREVO_API_KEY", "").strip()
+    if not api_key:
+        raise RuntimeError("BREVO_API_KEY is not set in backend/.env.")
+
+    sender_email = getattr(settings, "MAILER_FROM_EMAIL", "").strip()
+    sender_name = getattr(settings, "MAILER_FROM_NAME", "").strip()
+    if not sender_email:
+        raise RuntimeError("MAILER_FROM_EMAIL is not set in backend/.env.")
+
+    payload = {
+        "sender": {
+            "email": sender_email,
+        },
+        "to": [
+            {
+                "email": recipient_email,
+                "name": recipient_name,
+            }
+        ],
+        "subject": subject,
+        "textContent": text_content,
+    }
+    if sender_name:
+        payload["sender"]["name"] = sender_name
+
+    request = urllib.request.Request(
+        "https://api.brevo.com/v3/smtp/email",
+        data=json.dumps(payload).encode("utf-8"),
+        headers={
+            "accept": "application/json",
+            "content-type": "application/json",
+            "api-key": api_key,
+        },
+        method="POST",
+    )
+
+    try:
+        with urllib.request.urlopen(request, timeout=getattr(settings, "EMAIL_TIMEOUT", 15)) as response_obj:
+            response_obj.read()
+    except urllib.error.HTTPError as exc:
+        raw = exc.read().decode("utf-8", errors="replace")
+        try:
+            detail = json.loads(raw).get("message") or json.loads(raw).get("code") or raw
+        except json.JSONDecodeError:
+            detail = raw
+        raise RuntimeError(f"Brevo API email send failed: {detail}") from exc
+    except urllib.error.URLError as exc:
+        raise RuntimeError(f"Brevo API email send failed: {exc.reason}") from exc
+
+
 def send_account_credentials_email(*, recipient_name: str, recipient_email: str, role_label: str, password: str) -> None:
     subject = f"Your FilCare Clinic {role_label} account details"
     greeting_name = recipient_name.strip() or "there"
@@ -106,13 +156,12 @@ def send_account_credentials_email(*, recipient_name: str, recipient_email: str,
         f"Password: {password}\n\n"
         "Please log in and change your password immediately after your first sign-in.\n"
     )
-    email = EmailMessage(
+    send_brevo_transactional_email(
+        recipient_email=recipient_email,
+        recipient_name=greeting_name,
         subject=subject,
-        body=body,
-        from_email=settings.DEFAULT_FROM_EMAIL,
-        to=[recipient_email],
+        text_content=body,
     )
-    email.send(fail_silently=False)
 
 
 def send_signup_verification_email(*, recipient_name: str, recipient_email: str, verification_code: str) -> None:
@@ -124,21 +173,20 @@ def send_signup_verification_email(*, recipient_name: str, recipient_email: str,
         f"{verification_code}\n\n"
         "This code expires in 10 minutes.\n"
     )
-    email = EmailMessage(
+    send_brevo_transactional_email(
+        recipient_email=recipient_email,
+        recipient_name=greeting_name,
         subject=subject,
-        body=body,
-        from_email=settings.DEFAULT_FROM_EMAIL,
-        to=[recipient_email],
+        text_content=body,
     )
-    email.send(fail_silently=False)
 
 
 def format_email_delivery_hint(exc: Exception) -> str:
-    host = getattr(settings, "EMAIL_HOST", "")
     from_email = getattr(settings, "MAILER_FROM_EMAIL", "")
-    if host == "smtp-relay.brevo.com":
+    api_key = getattr(settings, "BREVO_API_KEY", "").strip()
+    if api_key:
         return (
-            f"{exc}. Brevo SMTP is configured with from address '{from_email}'. "
+            f"{exc}. Brevo API is configured with from address '{from_email}'. "
             "Make sure that sender is verified in Brevo, or use an authenticated domain sender."
         )
     return str(exc)
